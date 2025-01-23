@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 async function getPosts() {
@@ -17,9 +18,13 @@ export default async function Home() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Blog Posts</h1>
-      <ul>
+      <ul className="space-y-4">
         {
-          posts.map(post => <li key={post.id}>{post.title}</li>)
+          posts.map(post => <li  key={post.id}>
+            <Link href={`/blog/${post.id}`}>
+            <h1 className="text-blue-600">{post.title}</h1>
+            </Link>
+          </li>)
         }
       </ul>
     </div>
